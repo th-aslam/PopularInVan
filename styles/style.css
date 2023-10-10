@@ -106,28 +106,3 @@ footer a:hover {
   flex-direction: column;
   margin: 1.5rem;
 }
-
-table {
-  width: 100%;
-  border-width: 0 0 1px 1px;
-  border-style: solid;
-  border-color: orange;
-}
-
-table th {
-  background: #888;
-  color: #fff;
-}
-
-table th,
-table td {
-  text-align: center;
-  border-width: 1px 1px 0 0;
-  border-style: solid;
-  border-color: orange;
-  padding: 3px 5px;
-}
-
-.subTotatlRow .sub-total-text {
-  text-align: right;
-}
