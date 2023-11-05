@@ -7,6 +7,57 @@
 	<meta name="description" content="Popular places to visit in Vancouver">
 	<title>Popular places to visit in Vancouver</title>
 	<link rel="stylesheet" href="./styles/style.css">
+	<script>
+
+		let modal;
+		let span;
+		let iframeEl;
+
+		// When the user clicks on the button, open the modal
+		function showTourModal(videoIndex) {
+			// Get the modal element
+			modal = document.getElementById("tourModal");
+			iframeEl = document.getElementById("tour" + videoIndex);
+
+			iframeEl.style.display = "block";
+			modal.style.display = "block";
+		}
+
+		window.onload = () => {
+			// Get the modal
+			modal = document.getElementById("tourModal");
+
+			// Get the <span> element that closes the modal
+			span = document.getElementsByClassName("close-modal-icon")[0];
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function () {
+				modal.style.display = "none";
+				if (iframeEl) iframeEl.style.display = "none";
+
+				stopIframeVideoPlayback()
+			}
+
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function (event) {
+			modal = document.getElementById("tourModal");
+			if (event.target == modal) {
+				modal.style.display = "none";
+				if (iframeEl) iframeEl.style.display = "none";
+				stopIframeVideoPlayback();
+			}
+		}
+
+		function stopIframeVideoPlayback() {
+			let frame = iframeEl.querySelectorAll('iframe');
+			frame[0].contentWindow.postMessage(
+				'{"event":"command","func":"pauseVideo","args":""}',
+				'*');
+		}
+
+	</script>
 </head>
 
 <body>
@@ -69,12 +120,22 @@
 				<ul>
 					<li><a href="https://www.google.com/maps/place/5251+Oak+St,+Vancouver,+BC+V6M+4H1/@49.2385564,-123.1287215,17z/data=!3m1!4b1!4m6!3m5!1s0x5486738631821efb:0x199d9889a54fce98!8m2!3d49.2385564!4d-123.1287215!16s%2Fg%2F11csp073k1?entry=ttu"
 							target="_blank">5251 Oak St, Vancouver, BC V6M 4H1</a></li>
+					<br>
+					<iframe class="MAP"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.9428633893735!2d-123.13511552378125!3d49.2395724738064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486738678c76dc1%3A0x88c158f58601257!2sVanDusen%20Botanical%20Garden!5e0!3m2!1sen!2sca!4v1699124516087!5m2!1sen!2sca"
+						width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</ul>
 			</div>
 			<div class="bottom-items">
 				Hours:
 				<ul>
 					<li>10:00 am - 5:00 pm</li>
+					<br>
+					<button onclick="showTourModal(0)" class="model-button">Take Video Tour</button>
+
+
+				</ul>
 				</ul>
 			</div>
 		</div>
@@ -129,12 +190,19 @@
 						<a href="https://www.google.com/maps/place/SpringTide+Whale+Watching+%26+Eco+Tours/@48.4245006,-123.3715617,17z/data=!3m1!5s0x548f749ae2ec8805:0x648e2cf2db3facd7!4m10!1m2!2m1!1s1119+Wharf+Street+Victoria,+BCV8W+1T7!3m6!1s0x548f749b197fff93:0xb2100c3fbd9f009!8m2!3d48.4255917!4d-123.3695807!15sCiUxMTE5IFdoYXJmIFN0cmVldCBWaWN0b3JpYSwgQkNWOFcgMVQ3WiYiJDExMTkgd2hhcmYgc3RyZWV0IHZpY3RvcmlhIGJjdjh3IDF0N5IBGndoYWxlX3dhdGNoaW5nX3RvdXJfYWdlbmN54AEA!16s%2Fg%2F1tdvpfw_?entry=ttu"
 							target="_blank">1119 Wharf Street Vicoria, BC V8W 117</a>
 					</li>
+					<br>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2647.6688981208135!2d-123.3715617!3d48.4245006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f749b197fff93%3A0xb2100c3fbd9f009!2sSpringTide%20Whale%20Watching%20%26%20Eco%20Tours!5e0!3m2!1sen!2sca!4v1699124556904!5m2!1sen!2sca"
+						width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</ul>
 			</div>
 			<div class="bottom-items">
 				Hours:(Booking mandatory)
 				<ul>
 					<li>8:30 am - 7:00 pm</li>
+					<br>
+					<button onclick="showTourModal(1)" class="model-button">Take Video Tour</button>
 				</ul>
 			</div>
 		</div>
@@ -182,6 +250,11 @@
 				<ul>
 					<li><a href="https://westcoastsightseeing.com/live-bus-map/" target="_blank">Map to the bus stop</a>
 					</li>
+					<br>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2602.3980333415384!2d-123.11670362351069!3d49.287802671393656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDnCsDE3JzE2LjEiTiAxMjPCsDA2JzUwLjkiVw!5e0!3m2!1sen!2sca!4v1699124703119!5m2!1sen!2sca"
+						width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 				</ul>
 			</div>
@@ -189,6 +262,8 @@
 				Hours:
 				<ul>
 					8:45 am - 5:15 pm
+					<br>
+					<button onclick="showTourModal(2)" class="model-button">Take Video Tour</button>
 				</ul>
 			</div>
 		</div>
@@ -239,6 +314,11 @@
 				<ul>
 					<li><a href="https://www.google.com/maps/dir//Vancouver+Aquarium,+845+Avison+Way,+Vancouver,+BC+V6G+3E2/@49.3004876,-123.1308774,17z/data=!3m1!5s0x5486718d6d567c2d:0x338c646b9427b55!4m17!1m7!3m6!1s0x5486718d7aca6ca7:0x5f251627980ee358!2sVancouver+Aquarium!8m2!3d49.3004876!4d-123.1308774!16zL20vMDUxd3F4!4m8!1m0!1m5!1m1!1s0x5486718d7aca6ca7:0x5f251627980ee358!2m2!1d-123.1308774!2d49.3004876!3e3?entry=ttu"
 							target="_blank">854 Avison Way, Vancouver, BC V6G 3E2</a></li>
+					<br>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10406.913665157967!2d-123.1308774!3d49.3004876!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486718d7aca6ca7%3A0x5f251627980ee358!2sVancouver%20Aquarium!5e0!3m2!1sen!2sca!4v1699124784059!5m2!1sen!2sca"
+						width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</ul>
 			</div>
 
@@ -246,6 +326,8 @@
 				Hours:
 				<ul>
 					<li>9:00 am - 6:00 pm</li>
+					<br>
+					<button onclick="showTourModal(3)" class="model-button">Take Video Tour</button>
 				</ul>
 			</div>
 		</div>
@@ -311,6 +393,11 @@
 						<a href="https://www.google.com/maps/place/845+Avison+Way,+Vancouver,+BC+V6G+3E2/@49.3006591,-123.1308637,17z/data=!3m1!4b1!4m6!3m5!1s0x5486718d6dfab49d:0xc58e8ac51f70965f!8m2!3d49.3006591!4d-123.1308637!16s%2Fg%2F11bw3z0_r4?entry=ttu"
 							target="_blank">845 Avison Way, Vancouver, BC V6G 3E2</a>
 					</li>
+					<br>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2601.719362205548!2d-123.13086369999999!3d49.300659100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486718d6dfab49d%3A0xc58e8ac51f70965f!2s845%20Avison%20Way%2C%20Vancouver%2C%20BC%20V6G%203E2!5e0!3m2!1sen!2sca!4v1699124823923!5m2!1sen!2sca"
+						width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</ul>
 			</div>
 
@@ -318,6 +405,8 @@
 				Hours:
 				<ul>
 					<li>10:00 am - 5:00 pm</li>
+					<br>
+					<button onclick="showTourModal(4)" class="model-button">Take Video Tour</button>
 				</ul>
 			</div>
 		</div>
@@ -362,6 +451,11 @@
 				<ul>
 					<li><a href="https://www.google.com/maps/place/1494+Old+Bridge+St,+Vancouver,+BC+V6H+3S6/@49.270394,-123.134551,17z/data=!3m1!4b1!4m6!3m5!1s0x548673ceffb2b791:0x90d6dd58fefacecd!8m2!3d49.270394!4d-123.134551!16s%2Fg%2F11csgk9hkw?entry=ttu"
 							target="_blank">1494 Old Bridge St, Vancouver, BC V6H 3S6</a></li>
+					<br>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2603.3166183492153!2d-123.13712592377934!3d49.270397471624385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673ceffb2b791%3A0xf52290496b08de01!2sThe%20Liberty%20Distillery!5e0!3m2!1sen!2sca!4v1699124965664!5m2!1sen!2sca"
+						width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</ul>
 			</div>
 			<div class="bottom-items">
@@ -369,6 +463,8 @@
 				Hours:
 				<ul>
 					<li>11:00 am - 21:00 pm</li>
+					<br>
+					<button onclick="showTourModal(5)" class="model-button">Take Video Tour</button>
 				</ul>
 			</div>
 		</div>
@@ -407,12 +503,19 @@
 				<ul>
 					<li><a href="https://www.google.com/maps/place/601+Smithe+St,+Vancouver,+BC+V6B+1L7/@49.280238,-123.1201036,17z/data=!3m1!4b1!4m6!3m5!1s0x5486717e3586bc43:0x32fc700a7e1934a7!8m2!3d49.280238!4d-123.1201036!16s%2Fg%2F11c3q54w28?entry=ttu"
 							target="_blank">601 Smithe St, Vancouver, BC V6B 3L4</a></li>
+					<br>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2602.8054234690285!2d-123.1229913237789!3d49.28008407093864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486717fcd9b875d%3A0x6f19bb45bb73289c!2sThe%20Orpheum!5e0!3m2!1sen!2sca!4v1699125013264!5m2!1sen!2sca"
+						width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</ul>
 			</div>
 			<div class="bottom-items">
 				Hours:
 				<ul>
 					<li>9:00 am - 5:00 pm</li>
+					<br>
+					<button onclick="showTourModal(6)" class="model-button">Take Video Tour</button>
 				</ul>
 			</div>
 		</div>
@@ -455,11 +558,21 @@
 				<ul>
 					<li><a href="https://www.google.com/maps/place/639+Hornby+St,+Vancouver,+BC+V6C+2G3/@49.2845871,-123.1194282,17z/data=!3m1!4b1!4m6!3m5!1s0x54867181ef020837:0x483cce54a1808bf1!8m2!3d49.2845871!4d-123.1194282!16s%2Fg%2F11b8vf703s?entry=ttu"
 							target="_blank">639 Hornby St, Vancouver, BC V6C 2G3</a></li>
+					<br>
+					<li>
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2602.573755383815!2d-123.12191272377859!3d49.28447347062778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54867181efc2d1d3%3A0x9400bc0608f2251f!2sBill%20Reid%20Gallery%20of%20Northwest%20Coast%20Art!5e0!3m2!1sen!2sca!4v1699125038124!5m2!1sen!2sca"
+							width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+					</li>
 				</ul>
 			</div>
 			<div class="bottom-items">Hours:
 				<ul>
 					<li>10:00 am - 5:00 pm</li>
+					<br>
+					<button onclick="showTourModal(7)" class="model-button">Take Video Tour</button>
 				</ul>
 			</div>
 		</div>
@@ -502,6 +615,11 @@
 				<ul>
 					<li><a href="https://www.google.com/maps/place/Granville+Island+Public+Market/@49.2726609,-123.1351387,17z/data=!3m2!4b1!5s0x548673d1689f4a1d:0xccbf77e75d2e335b!4m6!3m5!1s0x548673ce77bc7a1b:0x47a4150bc8697d20!8m2!3d49.2726609!4d-123.1351387!16s%2Fg%2F11c442phc8?entry=ttu"
 							target="_blank">Public Market, 1689 Johnston St, Vancouver, BC V6H 3R9</a></li>
+					<br>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2603.197176176339!2d-123.1351387!3d49.2726609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673ce77bc7a1b%3A0x47a4150bc8697d20!2sGranville%20Island%20Public%20Market!5e0!3m2!1sen!2sca!4v1699125081715!5m2!1sen!2sca"
+						width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</ul>
 			</div>
 			<div class="bottom-items">
@@ -509,11 +627,87 @@
 				Hours:
 				<ul>
 					<li>9:00 am - 6:00 pm</li>
+					<br>
+					<button onclick="showTourModal(8)" class="model-button">Take Video Tour</button>
 				</ul>
 			</div>
 		</div>
 	</div>
-	
+	<div id="tourModal" class="modal">
+		<div class="modal-content">
+			<span class="close-modal-icon">&times;</span>
+			<div class="tourVideoContainer">
+
+				<div id="tour0" class="tourIframe">
+					<iframe width="600px" height="446px" src="https://www.youtube.com/embed/BReTjK3jPZc?&enablejsapi=1"
+						title="Visit VanDusen Botanical Garden" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+				</div>
+
+				<div id="tour1" class="tourIframe">
+					<iframe width="600px" height="446px" src="https://www.youtube.com/embed/3qJ3k8cEIR4?&enablejsapi=1"
+						title="Best Whale Watching in Victoria, BC with Eagle Wing Whale &amp; Wildlife Watching Tours"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+				</div>
+
+				<div id="tour2" class="tourIframe">
+					<iframe width="600px" height="446px" src="https://www.youtube.com/embed/ShqYqvKaOAE?&enablejsapi=1"
+						title="Top 10 Best Places to Visit in Vancouver 2023 | Canada Travel Guide" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+				</div>
+
+				<div id="tour3" class="tourIframe">
+					<iframe width="600px" height="446px" src="https://www.youtube.com/embed/PBw-fhRXHhk?&enablejsapi=1"
+						title="Discover Aquacamps at the Vancouver Aquarium" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+				</div>
+
+				<div id="tour4" class="tourIframe">
+					<iframe width="600px" height="446px" src="https://www.youtube.com/embed/3csSaUGweZA?&enablejsapi=1"
+						title="Vancouver North Shore Day Trip With Capilano Suspension Bridge and Grouse Mountain"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+				</div>
+
+
+				<div id="tour5" class="tourIframe">
+					<iframe width="600px" height="446" src="https://www.youtube.com/embed/fHix9Jue6YU?&enablejsapi=1"
+						title="The Journey From Grain to Glass | The Liberty Distillery" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+
+				</div>
+				<div id="tour6" class="tourIframe">
+					<iframe width="600px" height="446px" src="https://www.youtube.com/embed/kEOcaH1EPj8?&enablejsapi=1"
+						title="Orpheum Theater Tour" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+				</div>
+
+				<div id="tour7" class="tourIframe">
+					<iframe width="600px" height="446px" src="https://www.youtube.com/embed/I2nlZFv76wA?&enablejsapi=1"
+						title="Bill Reid Gallery Vancouver Canada" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+				</div>
+
+				<div id="tour8" class="tourIframe">
+					<iframe width="600px" height="446px" src="https://www.youtube.com/embed/t1D0x1LRCac?&enablejsapi=1"
+						title="[4K] Granville Island Vancouver B.C. Walking tour |The Lobster Man | Public Market."
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+				</div>
+
+			</div>
+		</div>
+	</div>
 	<footer>
 		Question ? email: <a href="https://mail.google.com" target="_blank">arthurdeoil@gmail.com</a>
 		</span><button><a href="#home">HOME</a></button>
