@@ -28,8 +28,32 @@
 			<button><a href="#Theatre">The Orpheum Theatre</a></button>
 			<button><a href="#Gallery">Bill Reid Gallery</a></button>
 			<button><a href="#Market">Granville Island Public Market</a></button>
+			<button><a href="#info">Personal information</a></button>
 		</nav>
 	</header>
+	<div class="card" id="Info">
+		<form id="Infoform">
+
+			<label for="age">Please enter yor age:</label>
+			<input type="number" min="19" id="age" size="5" maxlength="5">
+			<br>
+			<label for="Season">Please enter the season that you are:</label>
+			<br>
+			<input type="radio" name="Season" value="Summer" checked>Summer <br>
+			<input type="radio" name="Season" value="Spring">Spring <br>
+			<input type="radio" name="Season" value="Fall">Fall <br>
+			<input type="radio" name="Season" value="Winter">Winter <br>
+			<br>
+			<label for="Resident">Are you a resident in BC?</label>
+			<input type="radio" name="Resident" value="Yes">Yes <input type="radio" name="Resident" value="No">No
+			<br><br>
+			<label for="PI">Click this button to adapt the website to your information</label><br>
+			<input type="button" value="Personal information" id="PI" onclick="adapt(this.form);">
+			<br><br>
+			<label for="reset">Click this button to reset the website information</label><br>
+			<input type="button" value="Reset" id="reset" onclick="reload();">
+		</form>
+	</div>
 
 	<div class="card" id="vandusen">
 		<div class="top-row">
@@ -58,12 +82,12 @@
 		<div class="bottom">
 			<div class="bottom-items">
 				Price:
-				<ul>
+				<ul id="PVandusen">
 					<li>Winter/Spring</li>
 					<li>Adult: $8.90</li>
 					<li>Senior (65+)/Youth (13-18): $6.25</li>
 					<li>Child (5-12): $4.445</li>
-					<li>Spring/Summer</li>
+					<li>Fall/Summer</li>
 					<li>Adult: $12.30</li>
 					<li>Senior (65+)/Youth (13-18): $8.60</li>
 					<li>Child (5-12): $6.15</li>
@@ -126,12 +150,14 @@
 		<div class="bottom">
 			<div class="bottom-items">
 				Price:
-				<ul>
-					<h5>Whale & Wildlife Tour</h5>
+				<h5>Whale & Wildlife Tour</h5>
+				<ul id="Pwhale">
 					<li>Adult: $159</li>
 					<li>Senior: $129</li>
 					<li>Child: $99</li>
 					<li>Infat: FREE</li>
+				</ul>
+				<ul>
 					<h5>Zodiac & Wildlife Tour</h5>
 					<li>All: $169</li>
 				</ul>
@@ -190,11 +216,13 @@
 			<div class="bottom-items">
 
 				Price:
-				<ul>
-					<h5>24 Hour Classic Pass</h5>
+				<h5>24 Hour Classic Pass</h5>
+				<ul id="Pscience24">
 					<li>Adult (13+): $65</li>
 					<li>Child (3-12): $33</li>
-					<h5>48 Hour Classic Pass</h5>
+				</ul>
+				<h5>48 Hour Classic Pass</h5>
+				<ul id="Pscience48">
 					<li>Adult (13+): $80</li>
 					<li>Child (3-12): $40</li>
 				</ul>
@@ -256,7 +284,7 @@
 		<div class="bottom">
 			<div class="bottom-items">
 				Price:
-				<ul>
+				<ul id="PAquarium">
 					<li>(Membership) Individual regular 13 - 64: $75</li>
 
 					<li>Regular Ticket 13 - 64: ($39.95-51.95)</li>
@@ -322,22 +350,24 @@
 		<div class="bottom">
 			<div class="bottom-items">
 				Price:
-				<ul>
-					<h5>BC annual pass</h5>
-					<h6>(Only for British Columbia resident)</h6>
+				<h5>BC annual pass</h5>
+				<h6>(Only for British Columbia resident)</h6>
+				<ul id="PBridgeB">
 					<li>Adult 18-64: $66.95</li>
 					<li>Senior 65+: $61.95</li>
 					<li>Student 18+: $53.95</li>
 					<li>Youth 13-17: $36.95</li>
-					<li>Chield 6-12: $26.95</li>
-					<h5>Gift Tickets</h5>
-					<li>Adult 18-64: $66.95</li>
-					<li>Senior 65+: $61.95</li>
-					<li>Student 18+: $53.95</li>
-					<li>Youth 13-17: $36.95</li>
-					<li>Chield 6-12: $26.95</li>
-					<h6>(evening price is 30% off)</h6>
+					<li>Child 6-12: $26.95</li>
 				</ul>
+				<h5>Gift Tickets</h5>
+				<ul id="PBridgeG">
+					<li>Adult 18-64: $66.95</li>
+					<li>Senior 65+: $61.95</li>
+					<li>Student 18+: $53.95</li>
+					<li>Youth 13-17: $36.95</li>
+					<li>Child 6-12: $26.95</li>
+				</ul>
+				<h6>(evening price is 30% off)</h6>
 			</div>
 
 			<div class="bottom-items">
@@ -372,7 +402,7 @@
 			<div class="row-section">
 				<ul>
 					<li class="title">
-						<a href="https://www.thelibertydistillery.com/" target="_blank">The Liberty
+						<a>The Liberty
 							Distillery</a>
 					</li>
 				</ul>
@@ -398,6 +428,13 @@
 				<ul>
 					<li>Free to enter</li>
 				</ul>
+				<br>
+				<div id="ans">
+					<p>You must be 19+ to access the websitebr <br>
+					Click on this button o check your age and visit the website</p>
+				</div>
+
+				<input type="button" value="Visit website" form="Infoform" onclick="Website(this.form);">
 			</div>
 			<div class="bottom-items">
 
@@ -497,14 +534,16 @@
 		<div class="bottom">
 			<div class="bottom-items">
 				Price:
-				<ul>
+				<ul id="PGallry">
 					<li>Adults: $13</li>
 					<li>Seniors: $10</li>
-					<li>Students: $8</li>
 					<li>Youth: $6</li>
+				</ul>
+				<ul>
 					<li>Children: Free</li>
+					<li>Students: $8</li>
 					<li>Family: $30</li>
-					<li>Indifenous People: Free</li>
+					<li>Indigenous People: Free</li>
 					<li>Gallery Members: Free</li>
 				</ul>
 			</div>
