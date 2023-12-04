@@ -18,10 +18,10 @@ function toggleThemeMode() {
   const body = document.getElementsByTagName('body');
   const cards = document.getElementsByClassName('card');
 
-  const togggleButt = document.getElementById('themeToggler');
+  const toggleButton = document.getElementById('themeToggler');
   if (currentTheme == 'light') {
     currentTheme = 'dark';
-    togggleButt.innerText = 'Light Mode';
+    toggleButton.innerText = 'Light Mode';
     body[0].style.color = "#FFF"
     body[0].style.backgroundColor = '#5C271F';
     for (let i = 0; i < cards.length; i++) {
@@ -29,7 +29,7 @@ function toggleThemeMode() {
     }
   } else {
     currentTheme = 'light';
-    togggleButt.innerText = 'Dark Mode';
+    toggleButton.innerText = 'Dark Mode';
 
     body[0].style.backgroundColor = 'tomato';
     body[0].style.color = "#000"
