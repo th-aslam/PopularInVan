@@ -167,8 +167,16 @@ footer a:hover {
   justify-content: center;
 }
 
-
 .tourVideoContainer .tourIframe {
   align-self: stretch;
   display: none;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-bar-item {
+  flex-grow: 4;
 }
